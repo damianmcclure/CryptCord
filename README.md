@@ -7,8 +7,10 @@ BetterDiscord plugin for encrypting &amp; decrypting messages with private key.
 3) Type a message, and to encrypt it just press ALT+Enter and send the message!
 
 ## About
-Basically I made this to feel more secure on discord as a whole.<br>
-NOTE: This is NOT bulletproof encryption! If someone wasted their lives trying to bruteforce it, they could probably eventually get it.
+There's multiple reasons you might wanna use this.
+1) In Discord's TOS, it says they may collect and share your personal info you send in discord.
+2) You might wanna have a private conversation (though pm's exist)
+3) Other reasons which I'm not gonna get into...
 
 ## Screenshots
 ![example1](https://i.imgur.com/wmuM6oJ.png)
