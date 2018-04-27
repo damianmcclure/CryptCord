@@ -35,12 +35,18 @@ class Encrypt {
                 $(this).html(function (_, html) {
                     console.log(i);
                     var encrypted = i.replace(`<img src="/assets/86c36b8437a0bc80cf310733f54257c2.svg" class="emoji" alt=":lock:" draggable="false"> `, "");
-                    return html.replace(i, '<span style="color: #28e24e;"><img src="/assets/4f1e1fa42efdf4de983e3f609d56eb4c.svg" class="emoji jumboable" alt=":unlock:" draggable="false"> '+self.decrypt(encrypted)+'</span>');
+                    var decrypted = self.decrypt(encrypted);
+                    if(decrypted == "" || decrypted == " " || decrypted == null || !decrypted || decrypted.length < 4){
+                        return html.replace(i, '<span style="color: #e21f1f;"><img src="/assets/86c36b8437a0bc80cf310733f54257c2.svg" class="emoji" alt=":lock:" draggable="false"> '+encrypted+'</span>');
+                    } else if(decrypted.toString().toLowerCase().includes("error")) {
+                        return html.replace(i, '<span style="color: #e21f1f;"><img src="/assets/86c36b8437a0bc80cf310733f54257c2.svg" class="emoji" alt=":lock:" draggable="false"> '+decrypted+'</span>');
+                    } else {
+                        return html.replace(i, '<span style="color: #28e24e;"><img src="/assets/4f1e1fa42efdf4de983e3f609d56eb4c.svg" class="emoji" alt=":unlock:" draggable="false"> '+decrypted+'</span>');
+                    }
                 });
             }
         });
     }
-
     encryptInput(){
         
     }
