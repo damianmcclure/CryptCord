@@ -15,7 +15,10 @@ There's multiple reasons you might wanna use this.
 ## Screenshots
 ![example1](https://i.imgur.com/wmuM6oJ.png)
 <br>
-(Obviously) The red text shows that you did not have the correct key to decrypt it, the green text shows that you did.
+(Obviously) The red text shows that you did not have the correct key to decrypt it, the green text shows that you did.<br>
+![example2](https://i.imgur.com/jynl1Xz.png)
+<br>
+Settings for changing key
 
 ## Plans
 This isnt 100% done at all, I did this real quick in about an hour. I plan to:<br>
