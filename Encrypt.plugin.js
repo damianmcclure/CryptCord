@@ -83,14 +83,18 @@ class Encrypt {
                 var textarea = $("textarea");
                 $("textarea").focus();
                 $("textarea").select();
-                if(this.toggle){
-                    var encryp = self.encrypt(textarea.html());
-                    document.execCommand("insertText", false, "\u200B"+encryp);
-                    this.toggle = false;
+                if(!textarea.html() || textarea.html == ""){
+
                 } else {
-                    var decryp = self.decrypt($("textarea").html());
-                    document.execCommand("insertText", false, ""+decryp);
-                    this.toggle = true;
+                    if(this.toggle){
+                        var encryp = self.encrypt(textarea.html());
+                        document.execCommand("insertText", false, "\u200B"+encryp);
+                        this.toggle = false;
+                    } else {
+                        var decryp = self.decrypt($("textarea").html());
+                        document.execCommand("insertText", false, ""+decryp);
+                        this.toggle = true;
+                    }
                 }
             }
             if(e.keyCode === 13 && !e.altKey){
