@@ -39,7 +39,7 @@ class Encrypt {
                     console.log(i);
                     var encrypted = i.replace('\u200B', "");
                     var decrypted = self.decrypt(encrypted);
-                    if(decrypted == "" || decrypted == " " || decrypted == null || !decrypted || decrypted.length < 4){
+                    if(decrypted == "" || decrypted == " " || decrypted == null || !decrypted || decrypted.length < 1){
                         return html.replace(i, '<span style="color: #e21f1f;">[ERROR] '+encrypted+'</span>');
                     } else if(decrypted.toString().toLowerCase().includes("error")) {
                         return html.replace(i, '<span style="color: #e21f1f;">'+decrypted+'</span>');
