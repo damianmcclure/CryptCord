@@ -1,4 +1,7 @@
 //META{"name":"Encrypt"}*//
+
+//donate.atipls.com
+
 class Encrypt {
     constructor(){
         this.toggle = false;
@@ -31,17 +34,17 @@ class Encrypt {
         var self = this;
         $(".markup").each(function () {
             var i = $(this).html();
-            if(i.startsWith(`<img src="/assets/86c36b8437a0bc80cf310733f54257c2.svg" class="emoji" alt=":lock:" draggable="false"> `)){
+            if(i.startsWith('\u200B')){
                 $(this).html(function (_, html) {
                     console.log(i);
-                    var encrypted = i.replace(`<img src="/assets/86c36b8437a0bc80cf310733f54257c2.svg" class="emoji" alt=":lock:" draggable="false"> `, "");
+                    var encrypted = i.replace('\u200B', "");
                     var decrypted = self.decrypt(encrypted);
                     if(decrypted == "" || decrypted == " " || decrypted == null || !decrypted || decrypted.length < 4){
-                        return html.replace(i, '<span style="color: #e21f1f;"><img src="/assets/86c36b8437a0bc80cf310733f54257c2.svg" class="emoji" alt=":lock:" draggable="false"> '+encrypted+'</span>');
+                        return html.replace(i, '<span style="color: #ffffff;">[ERROR] '+encrypted+'</span>');
                     } else if(decrypted.toString().toLowerCase().includes("error")) {
-                        return html.replace(i, '<span style="color: #e21f1f;"><img src="/assets/86c36b8437a0bc80cf310733f54257c2.svg" class="emoji" alt=":lock:" draggable="false"> '+decrypted+'</span>');
+                        return html.replace(i, '<span style="color: #ffffff;">'+decrypted+'</span>');
                     } else {
-                        return html.replace(i, '<span style="color: #28e24e;"><img src="/assets/4f1e1fa42efdf4de983e3f609d56eb4c.svg" class="emoji" alt=":unlock:" draggable="false"> '+decrypted+'</span>');
+                        return html.replace(i, '<span style="color: #ffffff;">'+decrypted+'</span>');
                     }
                 });
             }
