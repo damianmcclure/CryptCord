@@ -24,9 +24,33 @@ class Encrypt {
         }
     }
 
+	formatMsg(msg){
+        var bold = /\*\*([^*]+)\*\*/g;
+        var italic = /\*([^*]+)\*/g;
+        var underline = /\_([^*]+)\_/g;
+        var strike = /\~\~([^*]+)\~\~/g;
+
+        var inline = /\`([^*]+)\`/g;
+
+        var codeblocksingle = /\`\`\`([^*]+)\`\`\`/g;
+        //var codeblockmulti = /\`\`\`([^*]+)\n([^*]+)\`\`\`/g;
+
+        msg = msg.replace(bold, "<b>$1</b>");
+        msg = msg.replace(italic, "<i>$1</i>");
+        msg = msg.replace(underline, "<U>$1</U>");
+        msg = msg.replace(strike, "<s>$1</s>");
+        //msg = msg.replace(codeblockmulti, `<pre><code class="scrollbarGhost-2F9Zj2 scrollbar-3dvm_9 hljs $1" style="position: relative;">$2</code></pre>`);
+        msg = msg.replace(codeblocksingle, `<pre><code class="scrollbarGhost-2F9Zj2 scrollbar-3dvm_9 hljs" style="position: relative;">$1</code></pre>`);
+        msg = msg.replace(inline, `<code class="inline">$1</code>`);
+        
+        return msg;
+    }
+
     decryptAll(){
+        var data = PluginUtilities.loadData("Encrypt", "key");
+        this.key = data.key;
         var self = this;
-        $(".markup").each(function () {
+        $(".markup").each(function(){
             var i = $(this).html();
             if(i.startsWith('\u200B')){
                 $(this).html(function (_, html) {
@@ -34,11 +58,11 @@ class Encrypt {
                     var encrypted = i.replace('\u200B', "");
                     var decrypted = self.decrypt(encrypted);
                     if(decrypted == "" || decrypted == " " || decrypted == null || !decrypted || decrypted.length < 1){
-                        return html.replace(i, '<span style="color: #e21f1f;">[ERROR] '+encrypted+'</span>');
+                        return html.replace(i, '<span style="color: #e21f1f;">[ERROR] '+self.formatMsg(encrypted)+'</span>');
                     } else if(decrypted.toString().toLowerCase().includes("error")) {
-                        return html.replace(i, '<span style="color: #e21f1f;">'+decrypted+'</span>');
+                        return html.replace(i, '<span style="color: #e21f1f;">'+self.formatMsg(decrypted)+'</span>');
                     } else {
-                        return html.replace(i, '<span style="color: #28e24e;">'+decrypted+'</span>');
+                        return html.replace(i, '<span style="color: #28e24e;">'+self.formatMsg(decrypted)+'</span>');
                     }
                 });
             }
