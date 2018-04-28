@@ -85,7 +85,7 @@ class Encrypt {
                 $("textarea").select();
                 if(this.toggle){
                     var encryp = self.encrypt(textarea.html());
-                    document.execCommand("insertText", false, ":lock: "+encryp);
+                    document.execCommand("insertText", false, "\u200B"+encryp);
                     this.toggle = false;
                 } else {
                     var decryp = self.decrypt($("textarea").html());
