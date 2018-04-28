@@ -89,7 +89,7 @@ class Encrypt {
                         document.execCommand("insertText", false, "\u200B"+encryp);
                         this.toggle = false;
                     } else {
-                        var decryp = self.decrypt($("textarea").html());
+                        var decryp = self.decrypt($("textarea").html().replace("\u200B", ""));
                         document.execCommand("insertText", false, ""+decryp);
                         this.toggle = true;
                     }
