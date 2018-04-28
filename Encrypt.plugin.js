@@ -4,14 +4,8 @@
 
 class Encrypt {
     constructor(){
-        this.toggle = false;
-        // CHANGE THIS CHANGE THIS CHANGE THIS CHANGE THIS CHANGE THIS
-        // CHANGE THIS CHANGE THIS CHANGE THIS CHANGE THIS CHANGE THIS
-        // CHANGE THIS CHANGE THIS CHANGE THIS CHANGE THIS CHANGE THIS
-        this.key = "0123456789ABCDEF0123456789ABCDEF"; 
-        // CHANGE THIS CHANGE THIS CHANGE THIS CHANGE THIS CHANGE THIS
-        // CHANGE THIS CHANGE THIS CHANGE THIS CHANGE THIS CHANGE THIS
-        // CHANGE THIS CHANGE THIS CHANGE THIS CHANGE THIS CHANGE THIS
+        this.toggle = false; // For toggling if it should encrypt or decrypt text in message.
+        this.key = "0123456789ABCDEF0123456789ABCDEF"; // No need to change this anymore, you can do it thru the settings. But this is the default key.
     }
 
     encrypt(text){
@@ -50,11 +44,14 @@ class Encrypt {
             }
         });
     }
+
     encryptInput(){
         
     }
 
     start(){
+        var data = PluginUtilities.loadData("Encrypt", "key");
+        this.key = data.key
         var libraryScript = document.createElement("script");
 		libraryScript.setAttribute("type", "text/javascript");
 		libraryScript.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/core-min.js");
@@ -75,6 +72,7 @@ class Encrypt {
 		libraryScript.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js");
         document.head.appendChild(libraryScript);
         
+        setTimeout(function(){}, 10000);
         var self = this;
         this.decryptAll();
         $(window).bind('keydown', function(e){
@@ -102,6 +100,20 @@ class Encrypt {
                 self.decryptAll();
             }
         });
+    }
+
+    saveSettings(){
+        this.key = $("#zugg").val();
+        PluginUtilities.saveData("Encrypt", "key", {key: this.key});
+    }
+
+    getSettingsPanel(){
+        var data = PluginUtilities.loadData("Encrypt", "key");
+        if(!data.key) { data.key = this.key; }
+        return `<div style="color: white; padding: 20px;">
+            Key: <input id="zugg" style="padding: 10px; width:70%;outline:none;color: white;border: none; border-radius: 5px; background-color: hsla(218,5%,47%,.3);" value=${data.key}><br><br>
+            <button onclick="BdApi.getPlugin('${this.getName()}').saveSettings()" style="background: #7289da;color: #FFF;border-radius: 5px;">Save Settings</button>
+        </div>`;
     }
 
     stop(){
