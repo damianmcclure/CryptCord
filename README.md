@@ -24,13 +24,14 @@ Settings for changing key
 This isnt 100% done at all, I did this real quick in about an hour. I plan to:<br>
 1) Make it possibly more secure
 2) Done! ~~Make it so you can edit the keys without having to edit the file (via settings or maybe another box on discord)~~
-3) Make it more fleshed out with less errors.
+3) Done! ~~Make it more fleshed out with less errors.~~
 
 ## Known Bugs
-* If you just opened discord and you loaded into a channel with encrypted text, it will say CryptoJS is not defined<br>
-* If you use "Citador" or another quote based program it tends to show "Malformed UTF-8 Text"
+* Fixed! ~~If you just opened discord and you loaded into a channel with encrypted text, it will say CryptoJS is not defined~~<br>
+* If you use "Citador" or another quote based program it tends to show "Malformed UTF-8 Text" for unknown reason.
 
-## Change Log (4/28/18)
+## Change Log (4/28/18) v0.0.2
 * Now you can edit the key VIA the betterdiscord settings
 * Doesn't Encrypt blank message
 * No more lock emoji as prefix, it detects it another way.
+* Some Bugs Fixed.
