@@ -1,11 +1,17 @@
-//META{"name":"Encrypt"}*//
+//META{"name":"CryptCord"}*//
 
 //donate.atipls.com
 
-class Encrypt {
+class CryptCord {
     constructor(){
-        this.toggle = false; // For toggling if it should encrypt or decrypt text in message.
-        this.key = "0123456789ABCDEF0123456789ABCDEF"; // No need to change this anymore, you can do it thru the settings. But this is the default key.
+        this.toggle = false;
+        // CHANGE THIS CHANGE THIS CHANGE THIS CHANGE THIS CHANGE THIS
+        // CHANGE THIS CHANGE THIS CHANGE THIS CHANGE THIS CHANGE THIS
+        // CHANGE THIS CHANGE THIS CHANGE THIS CHANGE THIS CHANGE THIS
+        this.key = "0123456789ABCDEF0123456789ABCDEF"; 
+        // CHANGE THIS CHANGE THIS CHANGE THIS CHANGE THIS CHANGE THIS
+        // CHANGE THIS CHANGE THIS CHANGE THIS CHANGE THIS CHANGE THIS
+        // CHANGE THIS CHANGE THIS CHANGE THIS CHANGE THIS CHANGE THIS
     }
 
     encrypt(text){
@@ -24,7 +30,7 @@ class Encrypt {
         }
     }
 
-	formatMsg(msg){
+    formatMsg(msg){
         var bold = /\*\*([^*]+)\*\*/g;
         var italic = /\*([^*]+)\*/g;
         var underline = /\_([^*]+)\_/g;
@@ -33,13 +39,13 @@ class Encrypt {
         var inline = /\`([^*]+)\`/g;
 
         var codeblocksingle = /\`\`\`([^*]+)\`\`\`/g;
-        //var codeblockmulti = /\`\`\`([^*]+)\n([^*]+)\`\`\`/g;
+        var codeblockmulti = /\`\`\`(\w+)\n((?:(?!\`\`\`)[\s\S])*)\`\`\`/g;
 
         msg = msg.replace(bold, "<b>$1</b>");
         msg = msg.replace(italic, "<i>$1</i>");
         msg = msg.replace(underline, "<U>$1</U>");
         msg = msg.replace(strike, "<s>$1</s>");
-        //msg = msg.replace(codeblockmulti, `<pre><code class="scrollbarGhost-2F9Zj2 scrollbar-3dvm_9 hljs $1" style="position: relative;">$2</code></pre>`);
+        msg = msg.replace(codeblockmulti, `<pre><code class="scrollbarGhost-2F9Zj2 scrollbar-3dvm_9 hljs $1" style="position: relative;">$2</code></pre>`);
         msg = msg.replace(codeblocksingle, `<pre><code class="scrollbarGhost-2F9Zj2 scrollbar-3dvm_9 hljs" style="position: relative;">$1</code></pre>`);
         msg = msg.replace(inline, `<code class="inline">$1</code>`);
         
@@ -74,12 +80,15 @@ class Encrypt {
     }
 
     start(){
-        var data = PluginUtilities.loadData("Encrypt", "key");
-        this.key = data.key
         var libraryScript = document.createElement("script");
 		libraryScript.setAttribute("type", "text/javascript");
 		libraryScript.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/core-min.js");
         document.head.appendChild(libraryScript);
+
+        libraryScript = document.createElement("script");
+		libraryScript.setAttribute("type", "text/javascript");
+		libraryScript.setAttribute("src", "https://mwittrien.github.io/BetterDiscordAddons/Plugins/BDfunctionsDevilBro.js");
+		document.head.appendChild(libraryScript);
         
         libraryScript = document.createElement("script");
 		libraryScript.setAttribute("type", "text/javascript");
@@ -94,14 +103,13 @@ class Encrypt {
         libraryScript = document.createElement("script");
 		libraryScript.setAttribute("type", "text/javascript");
 		libraryScript.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js");
-        document.head.appendChild(libraryScript);
+        document.head.appendChild(libraryScript);  
         
-        setTimeout(function(){}, 10000);
+        setTimeout(function(){console.log("[CryptCord] Init Etc")}, 10000);
         var self = this;
-        this.decryptAll();
         $(window).bind('keydown', function(e){
             if(e.altKey && e.keyCode === 13){
-                console.log("[EncryptCord] Alt Pressed Sir");
+                console.log("[CryptCord] Alt Pressed Sir");
                 var textarea = $("textarea");
                 $("textarea").focus();
                 $("textarea").select();
@@ -124,6 +132,7 @@ class Encrypt {
                 self.decryptAll();
             }
         });
+        console.log(this.formatMsg("```cs urmom```"));
     }
 
     saveSettings(){
@@ -145,6 +154,7 @@ class Encrypt {
     }
 
     load(){
+
     }
 
     unload(){
@@ -152,15 +162,19 @@ class Encrypt {
     }
 
     observer(mutation) {
-        this.decryptAll();
+        if(!PluginUtilities){
+
+        } else {
+            this.decryptAll();
+        }
     }
 
     onSwitch(){
         this.decryptAll();
     }
 
-    getName        () { return "Encrypt Plugin"; }
+    getName        () { return "CryptCord"; }
     getDescription () { return "Encrypt your messages on discord with a secret key, Hiding your messages from others and even Discord!"; }
-    getVersion     () { return "0.0.1"; }
+    getVersion     () { return "0.0.2"; }
     getAuthor      () { return "Mcclures"; }
 }
