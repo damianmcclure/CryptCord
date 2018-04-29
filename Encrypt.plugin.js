@@ -4,14 +4,8 @@
 
 class CryptCord {
     constructor(){
-        this.toggle = false;
-        // CHANGE THIS CHANGE THIS CHANGE THIS CHANGE THIS CHANGE THIS
-        // CHANGE THIS CHANGE THIS CHANGE THIS CHANGE THIS CHANGE THIS
-        // CHANGE THIS CHANGE THIS CHANGE THIS CHANGE THIS CHANGE THIS
-        this.key = "0123456789ABCDEF0123456789ABCDEF"; 
-        // CHANGE THIS CHANGE THIS CHANGE THIS CHANGE THIS CHANGE THIS
-        // CHANGE THIS CHANGE THIS CHANGE THIS CHANGE THIS CHANGE THIS
-        // CHANGE THIS CHANGE THIS CHANGE THIS CHANGE THIS CHANGE THIS
+        this.toggle = false; //ignore this
+        this.key = "0123456789ABCDEF0123456789ABCDEF"; //Default key, u can change this in settings.
     }
 
     encrypt(text){
