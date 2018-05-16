@@ -102,6 +102,8 @@ class CryptCord {
     }
 
     start(){
+        PluginUtilities.checkForUpdate(this.getName(), this.getVersion(), "https://raw.githubusercontent.com/mcclureski/CryptCord/master/Encrypt.plugin.js");
+
         setTimeout(function(){console.log("[CryptCord] Init Etc")}, 10000);
 
         var self = this;
