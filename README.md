@@ -41,6 +41,12 @@ Semi-supports discord markup with encryption (no text highlighting or emojis)
 * Fixed! ~~If you just opened discord and you loaded into a channel with encrypted text, it will say CryptoJS is not defined~~<br>
 * If you use "Citador" or another quote based program it tends to show "Malformed UTF-8 Text" for unknown reason.
 
+## Change Log (5/15/18) v0.0.5
+* Fixed Server Encryption Errors
+
+## Change Log (5/15/18) v0.0.4
+* Fixed Server Encryption Errors
+
 ## Change Log (5/15/18) v0.0.3
 * Fixed some bugs
 * Now possible to encrypt server names, roles, and topics for channels (you have to do it manually)
