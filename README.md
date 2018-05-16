@@ -31,7 +31,6 @@ Supports Citador quotes.
 Semi-supports discord markup with encryption (no text highlighting or emojis)
 
 ## Plans
-This isnt 100% done at all, I did this real quick in about an hour. I plan to:<br>
 1) Make it possibly more secure
 2) Make entire servers be encrypted (works kindof, but you have to manually change it)
 3) Make support for emojis and codeblock markup highlighting
