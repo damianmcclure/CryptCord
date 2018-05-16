@@ -6,7 +6,7 @@ BetterDiscord plugin for encrypting &amp; decrypting messages with private key.
 2) Share this key with another person (preferrably thru another platform so discord doesn't see your messages)
 3) Type a message
 4) To toggle between Encryption and Decryption, press ALT+Enter.
-X) If you want your roles/servername/descriptions to be encrypted, type the text in the message, encrypt it, and then copy paste it to the role/servername/description box. it will auto decrypt those too.
+5) If you want your roles/servername/descriptions to be encrypted, type the text in the message, encrypt it, and then copy paste it to the role/servername/description box. it will auto decrypt those too.
 
 ## About
 There's multiple reasons you might wanna use this.
@@ -28,8 +28,8 @@ An entire server Encrypted, with a bot that responds to encrypted messages (comi
 This isnt 100% done at all, I did this real quick in about an hour. I plan to:<br>
 1) Make it possibly more secure
 2) Make entire servers be encrypted (works kindof, but you have to manually change it)
-X) Done! ~~Make it so you can edit the keys without having to edit the file (via settings or maybe another box on discord)~~
-X) Done! ~~Make it more fleshed out with less errors.~~
+3) Done! ~~Make it so you can edit the keys without having to edit the file (via settings or maybe another box on discord)~~
+4) Done! ~~Make it more fleshed out with less errors.~~
 
 ## Known Bugs
 * Fixed! ~~If you just opened discord and you loaded into a channel with encrypted text, it will say CryptoJS is not defined~~<br>
