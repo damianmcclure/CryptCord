@@ -34,7 +34,7 @@ class CryptCord {
 
     getName        () { return "CryptCord"; }
     getDescription () { return "Encrypt your messages on discord with a secret key, Hiding your messages from others and even Discord!"; }
-    getVersion     () { return "0.0.3"; }
+    getVersion     () { return "0.0.4"; }
     getAuthor      () { return "Mcclures"; }
 
     encrypt(text){
@@ -54,6 +54,7 @@ class CryptCord {
     }
 
     formatMsg(msg){
+		if(!msg){msg="no msg etc"}
         var bold = /\*\*([^*]+)\*\*/g;
         var italic = /\*([^*]+)\*/g;
         var underline = /\_([^*]+)\_/g;
@@ -90,9 +91,9 @@ class CryptCord {
                     var encrypted = i.replace('\u200B', "");
                     var decrypted = self.decrypt(encrypted);
                     if(decrypted == "" || decrypted == " " || decrypted == null || !decrypted || decrypted.length < 1){
-                        return html.replace(i, '<span style="color: #e21f1f;">'+self.formatMsg(encrypted)+'</span>');
+                        return html.replace(i, '<span style="color: #e21f1f;">'+encrypted+'</span>');
                     } else if(decrypted.toString().toLowerCase().includes("error")) {
-                        return html.replace(i, '<span style="color: #e21f1f;">'+self.formatMsg(decrypted)+'</span>');
+                        return html.replace(i, '<span style="color: #e21f1f;">'+decrypted+'</span>');
                     } else {
                         return html.replace(i, '<span style="color: #28e24e;">'+self.formatMsg(decrypted)+'</span>');
                     }
