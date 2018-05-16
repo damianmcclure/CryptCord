@@ -34,7 +34,7 @@ class CryptCord {
 
     getName        () { return "CryptCord"; }
     getDescription () { return "Encrypt your messages on discord with a secret key, Hiding your messages from others and even Discord!"; }
-    getVersion     () { return "0.0.4"; }
+    getVersion     () { return "0.0.5"; }
     getAuthor      () { return "Mcclures"; }
 
     encrypt(text){
@@ -168,39 +168,51 @@ class CryptCord {
 
     onSwitch(){
         var self = this;
-        if($(".name-3YKhmS").html().startsWith("U2")){
-            var decrypted = this.decrypt($(".name-3YKhmS").html());
-            if(decrypted == "" || decrypted == " " || decrypted == null || !decrypted || decrypted.length < 1){
-
-            } else if(decrypted.toString().toLowerCase().includes("error")) {
-
-            } else {
-                $(".name-3YKhmS").html('<span style="color: #28e24e;">'+decrypted+'</span>');
-            }
+        if($(".name-3YKhmS").html()){
+			if($(".name-3YKhmS").html().startsWith("U2")){
+				console.log("[CryptCord] Server Name Formatted");
+				var encrypted = $(".name-3YKhmS").html().replace("\u200B");
+				var decrypted = this.decrypt(encrypted);
+				if(decrypted == "" || decrypted == " " || decrypted == null || !decrypted || decrypted.length < 1){
+					$(".name-3YKhmS").html('<span style="color: #e21f1f;">'+encrypted+'</span>');
+				} else if(decrypted.toString().toLowerCase().includes("error")) {
+					$(".name-3YKhmS").html('<span style="color: #e21f1f;">'+encrypted+'</span>');
+				} else {
+					$(".name-3YKhmS").html('<span style="color: #28e24e;">'+this.formatMsg(decrypted)+'</span>');
+				}
+			}
         }
-        if($(".topic-2QX7LI").html().startsWith("U2")){
-            var decrypted = this.decrypt($(".topic-2QX7LI").html());
-            if(decrypted == "" || decrypted == " " || decrypted == null || !decrypted || decrypted.length < 1){
-                
-            } else if(decrypted.toString().toLowerCase().includes("error")) {
-                
-            } else {
-                $(".topic-2QX7LI").html('<span style="color: #28e24e;">'+decrypted+'</span>');
-            }
+        if($(".topic-2QX7LI").html()){
+			if($(".topic-2QX7LI").html().startsWith("U2")){
+				console.log("[CryptCord] Topics Formatted");
+				var encrypted = $(".topic-2QX7LI").html().replace("\u200B");
+				var decrypted = this.decrypt(encrypted);
+				if(decrypted == "" || decrypted == " " || decrypted == null || !decrypted || decrypted.length < 1){
+					$(".topic-2QX7LI").html('<span style="color: #e21f1f;">'+encrypted+'</span>');
+				} else if(decrypted.toString().toLowerCase().includes("error")) {
+					$(".topic-2QX7LI").html('<span style="color: #e21f1f;">'+encrypted+'</span>');
+				} else {
+					$(".topic-2QX7LI").html('<span style="color: #28e24e;">'+this.formatMsg(decrypted)+'</span>');
+				}
+			}
         }
         $(".membersGroup-v9BXpm").each(function(){
-            var ii = $(this);
-            var ie = ii.html().split("—");
-            var i = ie[0];
-            var decrypted = self.decrypt(i);
-            if(decrypted == "" || decrypted == " " || decrypted == null || !decrypted || decrypted.length < 1){
-               
-            } else if(decrypted.toString().toLowerCase().includes("error")) {
-                
-            } else {
-                ii.html('<span style="color: #28e24e;">'+decrypted+'</span>'+"—"+ie[1]);
-            }
-        })
+			if($(this).html().startsWith("U2")){
+				console.log("[CryptCord] One Role Formatted "+$(this).html());
+				var ii = $(this);
+				var ie = ii.html().split("—");
+				var i = ie[0];
+				var encrypted = i.replace("\u200B");
+				var decrypted = self.decrypt(encrypted);
+				if(decrypted == "" || decrypted == " " || decrypted == null || !decrypted || decrypted.length < 1){
+					ii.html('<span style="color: #e21f1f;">'+encrypted+'</span>');
+				} else if(decrypted.toString().toLowerCase().includes("error")) {
+					ii.html('<span style="color: #e21f1f;">'+encrypted+'</span>');
+				} else {
+					ii.html('<span style="color: #28e24e;">'+decrypted+'</span>'+"—"+ie[1]);
+				}
+			}
+        });
         this.decryptAll();
     }
 }
