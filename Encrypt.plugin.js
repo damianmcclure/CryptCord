@@ -4,6 +4,32 @@ class CryptCord {
     constructor(){
         this.toggle = false; //ignore this
         this.key = "0123456789ABCDEF0123456789ABCDEF"; //Default key, u can change this in settings.
+
+        //load libs etc
+        var libraryScript = document.createElement("script");
+		libraryScript.setAttribute("type", "text/javascript");
+		libraryScript.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/core-min.js");
+        document.head.appendChild(libraryScript);
+
+	    libraryScript = document.createElement("script");
+		libraryScript.setAttribute("type", "text/javascript");
+		libraryScript.setAttribute("src", "https://rauenzi.github.io/BetterDiscordAddons/Plugins/PluginLibrary.js");
+		document.head.appendChild(libraryScript);
+        
+        libraryScript = document.createElement("script");
+		libraryScript.setAttribute("type", "text/javascript");
+		libraryScript.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/sha256.js");
+        document.head.appendChild(libraryScript);
+        
+        libraryScript = document.createElement("script");
+		libraryScript.setAttribute("type", "text/javascript");
+		libraryScript.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/enc-base64.js");
+        document.head.appendChild(libraryScript);
+        
+        libraryScript = document.createElement("script");
+		libraryScript.setAttribute("type", "text/javascript");
+		libraryScript.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js");
+        document.head.appendChild(libraryScript);  
     }
 
     getName        () { return "CryptCord"; }
@@ -76,34 +102,8 @@ class CryptCord {
     }
 
     start(){
-        PluginUtilities.checkForUpdate(this.getName(), this.getVersion(), "https://raw.githubusercontent.com/mcclureski/CryptCord/master/Encrypt.plugin.js");
-
-        var libraryScript = document.createElement("script");
-		libraryScript.setAttribute("type", "text/javascript");
-		libraryScript.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/core-min.js");
-        document.head.appendChild(libraryScript);
-
-        libraryScript = document.createElement("script");
-		libraryScript.setAttribute("type", "text/javascript");
-		libraryScript.setAttribute("src", "https://mwittrien.github.io/BetterDiscordAddons/Plugins/BDfunctionsDevilBro.js");
-		document.head.appendChild(libraryScript);
-        
-        libraryScript = document.createElement("script");
-		libraryScript.setAttribute("type", "text/javascript");
-		libraryScript.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/sha256.js");
-        document.head.appendChild(libraryScript);
-        
-        libraryScript = document.createElement("script");
-		libraryScript.setAttribute("type", "text/javascript");
-		libraryScript.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/enc-base64.js");
-        document.head.appendChild(libraryScript);
-        
-        libraryScript = document.createElement("script");
-		libraryScript.setAttribute("type", "text/javascript");
-		libraryScript.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js");
-        document.head.appendChild(libraryScript);  
-        
         setTimeout(function(){console.log("[CryptCord] Init Etc")}, 10000);
+
         var self = this;
         $(window).bind('keydown', function(e){
             if(e.altKey && e.keyCode === 13){
@@ -152,7 +152,7 @@ class CryptCord {
     }
 
     load(){
-
+        
     }
 
     unload(){
