@@ -34,7 +34,7 @@ class CryptCord {
 
     getName        () { return "CryptCord"; }
     getDescription () { return "Encrypt your messages on discord with a secret key, Hiding your messages from others and even Discord!"; }
-    getVersion     () { return "0.0.5"; }
+    getVersion     () { return "0.0.6"; }
     getAuthor      () { return "Mcclures"; }
 
     encrypt(text){
@@ -169,9 +169,9 @@ class CryptCord {
     onSwitch(){
         var self = this;
         if($(".name-3YKhmS").html()){
-			if($(".name-3YKhmS").html().startsWith("U2")){
+			if($(".name-3YKhmS").html().startsWith("&#8203;") || $(".name-3YKhmS").html().startsWith("U2") || $(".name-3YKhmS").html().startsWith("\u200B")){
 				console.log("[CryptCord] Server Name Formatted");
-				var encrypted = $(".name-3YKhmS").html().replace("\u200B");
+				var encrypted = $(".name-3YKhmS").html().replace("\u200B", "").replace("&#8203;", "");
 				var decrypted = this.decrypt(encrypted);
 				if(decrypted == "" || decrypted == " " || decrypted == null || !decrypted || decrypted.length < 1){
 					$(".name-3YKhmS").html('<span style="color: #e21f1f;">'+encrypted+'</span>');
@@ -183,9 +183,9 @@ class CryptCord {
 			}
         }
         if($(".topic-2QX7LI").html()){
-			if($(".topic-2QX7LI").html().startsWith("U2")){
+			if($(".topic-2QX7LI").html().startsWith("&#8203;") || $(".topic-2QX7LI").html().startsWith("U2") || $(".topic-2QX7LI").html().startsWith("\u200B")){
 				console.log("[CryptCord] Topics Formatted");
-				var encrypted = $(".topic-2QX7LI").html().replace("\u200B");
+				var encrypted = $(".topic-2QX7LI").html().replace("\u200B", "").replace("&#8203;", "");
 				var decrypted = this.decrypt(encrypted);
 				if(decrypted == "" || decrypted == " " || decrypted == null || !decrypted || decrypted.length < 1){
 					$(".topic-2QX7LI").html('<span style="color: #e21f1f;">'+encrypted+'</span>');
@@ -197,12 +197,12 @@ class CryptCord {
 			}
         }
         $(".membersGroup-v9BXpm").each(function(){
-			if($(this).html().startsWith("U2")){
+			if($(this).html().startsWith("&#8203;") || $(this).html().startsWith("U2") || $(this).html().startsWith("\u200B")){
 				console.log("[CryptCord] One Role Formatted "+$(this).html());
 				var ii = $(this);
 				var ie = ii.html().split("—");
 				var i = ie[0];
-				var encrypted = i.replace("\u200B");
+				var encrypted = i.replace("\u200B", "").replace("&#8203;", "");
 				var decrypted = self.decrypt(encrypted);
 				if(decrypted == "" || decrypted == " " || decrypted == null || !decrypted || decrypted.length < 1){
 					ii.html('<span style="color: #e21f1f;">'+encrypted+'</span>');
