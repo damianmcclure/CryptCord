@@ -34,12 +34,15 @@ class CryptCord {
 
     getName        () { return "CryptCord"; }
     getDescription () { return "Encrypt your messages on discord with a secret key, Hiding your messages from others and even Discord!"; }
-    getVersion     () { return "0.0.6"; }
+    getVersion     () { return "0.0.7"; }
     getAuthor      () { return "Mcclures"; }
 
     encrypt(text){
         try {
-            return CryptoJS.AES.encrypt(text, this.key);
+            var encd = CryptoJS.AES.encrypt(text, this.key);
+			console.log("Salt: "+encd.salt.toString());
+			console.log("IV..: "+encd.iv.toString());
+			return encd;
         } catch(err) {
             return err;
         }
@@ -210,6 +213,23 @@ class CryptCord {
 					ii.html('<span style="color: #e21f1f;">'+encrypted+'</span>');
 				} else {
 					ii.html('<span style="color: #28e24e;">'+decrypted+'</span>'+"—"+ie[1]);
+				}
+			}
+        });
+        $(".embedFieldName-NFrena").each(function(){
+			if($(this).html().startsWith("&#8203;") || $(this).html().startsWith("U2") || $(this).html().startsWith("\u200B")){
+				console.log("[CryptCord] Embed Titles Formatted "+$(this).html());
+				var ii = $(this);
+				var ie = ii.html();
+				var i = ie;
+				var encrypted = i.replace("\u200B", "").replace("&#8203;", "");
+				var decrypted = self.decrypt(encrypted);
+				if(decrypted == "" || decrypted == " " || decrypted == null || !decrypted || decrypted.length < 1){
+					ii.html('<span style="color: #e21f1f;font-weight: bold;">'+encrypted+'</span>');
+				} else if(decrypted.toString().toLowerCase().includes("error")) {
+					ii.html('<span style="color: #e21f1f;font-weight: bold;">'+encrypted+'</span>');
+				} else {
+					ii.html('<span style="color: #28e24e;font-weight: bold;">'+decrypted+'</span>');
 				}
 			}
         });
