@@ -1,6 +1,11 @@
 # CryptCord
 BetterDiscord plugin for encrypting &amp; decrypting messages with private key.
 
+## Tampermonkey Version
+It's not in working order. Please consider fixing it. From what I've seen it has these issues:<br>
+1) Doesn't wanna paste text into the textarea on Firefox.
+2) It won't get the actual textarea text in the Tampermonkey wrapper.
+
 ## Instructions
 1) Replace the key in Plugin Settings
 2) Share this key with another person (preferrably thru another platform so discord doesn't see your messages)
