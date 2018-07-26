@@ -1,3 +1,6 @@
+// WARNING: THIS ISNT WORKING! PLEASE CONSIDER FIXING IT :)
+// ========================================================
+
 // ==UserScript==
 // @name         CryptCord
 // @namespace    https://github.com/mcclureski/cryptcord
