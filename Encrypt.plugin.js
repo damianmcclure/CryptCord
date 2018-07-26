@@ -1,5 +1,6 @@
 //META{"name":"CryptCord"}*//
-
+//.markup is .da-markup now
+//Credits to: AtiPLS for ideas and etc
 class CryptCord {
     constructor(){
         this.toggle = false; //ignore this
@@ -34,7 +35,7 @@ class CryptCord {
 
     getName        () { return "CryptCord"; }
     getDescription () { return "Encrypt your messages on discord with a secret key, Hiding your messages from others and even Discord!"; }
-    getVersion     () { return "0.0.7"; }
+    getVersion     () { return "0.0.8"; }
     getAuthor      () { return "Mcclures"; }
 
     encrypt(text){
@@ -86,7 +87,7 @@ class CryptCord {
         var data = PluginUtilities.loadData("Encrypt", "key");
         this.key = data.key;
         var self = this;
-        $(".markup").each(function(){
+        $(".da-markup").each(function(){
             var i = $(this).html();
             if(i.startsWith('\u200B')){
                 $(this).html(function (_, html) {
