@@ -178,7 +178,7 @@ class CryptCord {
         if(!data.key) { data.key = this.key; }
         return `<div style="color: white; padding: 20px;">
             Key: <input id="cryptkey" style="padding: 10px; width:70%;outline:none;color: white;border: none; border-radius: 5px; background-color: hsla(218,5%,47%,.3);" value=${data.key}><br><br>
-            <button onclick="BdApi.getPlugin('${this.getName()}').saveSettings()" style="background: #7289da;color: #FFF;border-radius: 5px;">Save Settings</button><button onclick="BdApi.getPlugin('${this.getName()}').randomKey()" style="background: #7289da;color: #FFF;border-radius: 5px;">Generate Key</button>
+            <button onclick="BdApi.getPlugin('${this.getName()}').saveSettings()" style="background: #7289da;color: #FFF;border-radius: 5px;">Save Settings</button>&nbsp;<button onclick="BdApi.getPlugin('${this.getName()}').randomKey()" style="background: #7289da;color: #FFF;border-radius: 5px;">Generate Key</button>
         </div>`;
     }
 
