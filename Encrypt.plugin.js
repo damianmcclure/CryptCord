@@ -55,7 +55,7 @@ class CryptCord {
 
     getName        () { return "CryptCord"; }
     getDescription () { return "Encrypt your messages on discord with a secret key, Hiding your messages from others and even Discord!"; }
-    getVersion     () { return "0.0.8"; }
+    getVersion     () { return "0.0.9"; }
     getAuthor      () { return "Mcclures"; }
 
     encrypt(text){
