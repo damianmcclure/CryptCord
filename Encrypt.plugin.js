@@ -129,12 +129,12 @@ class CryptCord {
     }
 
     start(){
-        setTimeout(function(){console.log("[CryptCord] Init Etc")}, 10000);
+        setTimeout(function(){console.log("[CryptCord] Init")}, 10000);
 
         var self = this;
         $(window).bind('keydown', function(e){
             if(e.altKey && e.keyCode === 13){
-                console.log("[CryptCord] Alt Pressed Sir");
+                console.log("[CryptCord] Alt Pressed");
                 var textarea = $("textarea");
                 $("textarea").focus();
                 $("textarea").select();
@@ -157,7 +157,6 @@ class CryptCord {
                 self.decryptAll();
             }
         });
-        console.log(this.formatMsg("```cs urmom```"));
     }
 
     randomKey(){
