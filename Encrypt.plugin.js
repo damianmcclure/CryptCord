@@ -1,10 +1,14 @@
 //META{"name":"CryptCord"}*//
-//.markup is .da-markup now
-//Credits to: AtiPLS for ideas, fixing, and etc.
+
+/*
+CryptCord - BetterDiscord plugin for encrypting & decrypting messages with private key.
+Thank you to AtiPLS for fixing things multiple times
+*/
+
 class CryptCord {
     constructor(){
-        this.toggle = false; //ignore this
-        this.key = "0123456789ABCDEF0123456789ABCDEF"; //Default key, u can change this in settings.
+        this.toggle = false;
+        this.key = "0123456789ABCDEF0123456789ABCDEF";
         jQuery.expr[':'].regex = function (elem, index, match) {
             var matchParams = match[3].split(','),
                 validLabels = /^(data|css):/,
@@ -17,10 +21,10 @@ class CryptCord {
                 regex = new RegExp(matchParams.join('').replace(/^\s+|\s+$/g, ''), regexFlags);
             return regex.test(jQuery(elem)[attr.method](attr.property));
         }
-        //load libs etc
+	    
         var libraryScript = document.createElement("script");
-		libraryScript.setAttribute("type", "text/javascript");
-		libraryScript.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/core-min.js");
+	    libraryScript.setAttribute("type", "text/javascript");
+	    libraryScript.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/core-min.js");
         document.head.appendChild(libraryScript);
 
         libraryScript = document.getElementById('ZLibraryScript');
@@ -34,18 +38,18 @@ class CryptCord {
         }
         
         libraryScript = document.createElement("script");
-		libraryScript.setAttribute("type", "text/javascript");
-		libraryScript.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/sha256.js");
+	    libraryScript.setAttribute("type", "text/javascript");
+	    libraryScript.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/sha256.js");
         document.head.appendChild(libraryScript);
         
         libraryScript = document.createElement("script");
-		libraryScript.setAttribute("type", "text/javascript");
-		libraryScript.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/enc-base64.js");
+	    libraryScript.setAttribute("type", "text/javascript");
+	    libraryScript.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/enc-base64.js");
         document.head.appendChild(libraryScript);
         
         libraryScript = document.createElement("script");
-		libraryScript.setAttribute("type", "text/javascript");
-		libraryScript.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js");
+	    libraryScript.setAttribute("type", "text/javascript");
+	    libraryScript.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js");
         document.head.appendChild(libraryScript);  
     }
 
@@ -56,10 +60,10 @@ class CryptCord {
 
     encrypt(text){
         try {
-            var encd = CryptoJS.AES.encrypt(text, this.key);
-			console.log("Salt: "+encd.salt.toString());
-			console.log("IV..: "+encd.iv.toString());
-			return encd;
+		    var encd = CryptoJS.AES.encrypt(text, this.key);
+		    console.log("Salt: "+encd.salt.toString());
+		    console.log("IV..: "+encd.iv.toString());
+		    return encd;
         } catch (err) {
             console.log(err);
             return err;
@@ -75,16 +79,15 @@ class CryptCord {
     }
 
     formatMsg(msg){
-		if(!msg){msg="no msg etc"}
+		if(!msg){
+            msg="Nothing";
+        }
         var bold = /\*\*([^*]+)\*\*/g;
         var italic = /\*([^*]+)\*/g;
         var underline = /\_([^*]+)\_/g;
         var strike = /\~\~([^*]+)\~\~/g;
-
         var url = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
-
         var inline = /\`([^*]+)\`/g;
-
         var codeblocksingle = /\`\`\`([^*]+)\`\`\`/g;
         var codeblockmulti = /\`\`\`(\w+)\n((?:(?!\`\`\`)[\s\S])*)\`\`\`/g;
 
@@ -96,12 +99,14 @@ class CryptCord {
         msg = msg.replace(codeblocksingle, `<pre><code class="scrollbarGhost-2F9Zj2 scrollbar-3dvm_9 hljs" style="position: relative;">$1</code></pre>`);
         msg = msg.replace(inline, `<code class="inline">$1</code>`);
         msg = msg.replace(url, "<a href='$1'>$1</a>");
-        
         return msg;
     }
 
     decryptAll(){
         var data = ZLibrary.PluginUtilities.loadData("Encrypt", "key");
+        if(!data.key){
+            data.key = this.key;
+        }
         this.key = data.key;
         var self = this;
         $(".da-markup").each(function(){
@@ -155,8 +160,17 @@ class CryptCord {
         console.log(this.formatMsg("```cs urmom```"));
     }
 
+    randomKey(){
+        let result = "";
+        var possible = "0123456789ABCDEF0123456789ABCDEF";
+        for (var i = 0; i < possible.length; i++) {
+            result += possible.charAt(Math.floor(Math.random() * possible.length));
+        }
+        $("#cryptkey").val(result);
+    }
+
     saveSettings(){
-        this.key = $("#zugg").val();
+        this.key = $("#cryptkey").val();
         ZLibrary.PluginUtilities.saveData("Encrypt", "key", {key: this.key});
     }
 
@@ -164,8 +178,8 @@ class CryptCord {
         var data = ZLibrary.PluginUtilities.loadData("Encrypt", "key");
         if(!data.key) { data.key = this.key; }
         return `<div style="color: white; padding: 20px;">
-            Key: <input id="zugg" style="padding: 10px; width:70%;outline:none;color: white;border: none; border-radius: 5px; background-color: hsla(218,5%,47%,.3);" value=${data.key}><br><br>
-            <button onclick="BdApi.getPlugin('${this.getName()}').saveSettings()" style="background: #7289da;color: #FFF;border-radius: 5px;">Save Settings</button>
+            Key: <input id="cryptkey" style="padding: 10px; width:70%;outline:none;color: white;border: none; border-radius: 5px; background-color: hsla(218,5%,47%,.3);" value=${data.key}><br><br>
+            <button onclick="BdApi.getPlugin('${this.getName()}').saveSettings()" style="background: #7289da;color: #FFF;border-radius: 5px;">Save Settings</button><button onclick="BdApi.getPlugin('${this.getName()}').randomKey()" style="background: #7289da;color: #FFF;border-radius: 5px;">Generate Key</button>
         </div>`;
     }
 
