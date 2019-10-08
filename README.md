@@ -2,7 +2,7 @@
 BetterDiscord plugin for encrypting &amp; decrypting messages with private key.
 
 ## About
-A Discord plugin for encrypting your messages with AES-256, using the CryptoJS library. I don't know the full extent of the security of AES-256, but I am under the impression that the average person would not go thru all the effort to decrypt said message. I am not responsible for miss-use of this plugin with any illegal activities or otherwise TOS-Breaking things on Discord. You are solely responsible for what you use this tool for.
+A Discord plugin for encrypting your messages with AES-256, using the CryptoJS library. I don't know the full extent of the security of AES-256, but you can do your own research. <a href="https://crypto.stackexchange.com/questions/2251/how-secure-is-aes-256">StackExchange</a> I am not responsible for miss-use of this plugin with any illegal activities or otherwise TOS-Breaking things on Discord. You are solely responsible for what you use this tool for.
 
 ## Instructions
 1. Downlaod and install the plugin via BetterDiscord or whatever plugin manager you choose.
