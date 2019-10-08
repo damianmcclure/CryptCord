@@ -1,23 +1,15 @@
 # CryptCord
 BetterDiscord plugin for encrypting &amp; decrypting messages with private key.
 
-## Tampermonkey Version
-It's not in working order. Please consider fixing it. From what I've seen it has these issues:<br>
-1) Doesn't wanna paste text into the textarea on Firefox.
-2) It won't get the actual textarea text in the Tampermonkey wrapper.
+## About
+A Discord plugin for encrypting your messages with AES-256, using the CryptoJS library. I don't know the full extent of the security of AES-256, but I am under the impression that the average person would not go thru all the effort to decrypt said message. I am not responsible for miss-use of this plugin with any illegal activities or otherwise TOS-Breaking things on Discord. You are solely responsible for what you use this tool for.
 
 ## Instructions
-1) Replace the key in Plugin Settings
-2) Share this key with another person (preferrably thru another platform so discord doesn't see your messages)
-3) Type a message
-4) To toggle between Encryption and Decryption, press ALT+Enter.
-5) If you want your roles/servername/descriptions to be encrypted, type the text in the message, encrypt it, and then copy paste it to the role/servername/description box. it will auto decrypt those too.
-
-## About
-There's multiple reasons you might wanna use this.
-1) In Discord's TOS, it says they may collect and share your personal info you send in discord.
-2) You might wanna have a private conversation (though pm's exist)
-3) Other reasons which I'm not gonna get into...
+1. Downlaod and install the plugin via BetterDiscord or whatever plugin manager you choose.
+2. Go to the plugin settings in BetterDiscord, or edit the Encrypt.plugin.js file and change the encryption key. On BetterDiscord you can click "Generate Key".
+3. Save the settings or the file.
+4. Give the key to said person, prefferably via another platform so Discord does not have the key in any way.
+5. Go to where you wish to send an encrypted message, Type it out, and then hold ALT and press enter. It will send an encrypted message.
 
 ## Screenshots
 ![example1](https://i.imgur.com/lx665z7.png)<br>
@@ -33,34 +25,13 @@ An entire server Encrypted, with a bot that responds to encrypted messages (comi
 Supports Citador quotes.
 <br><br>
 ![example5](https://i.imgur.com/O4faa2T.png)<br>
-Semi-supports discord markup with encryption (no text highlighting or emojis)
-
-## Plans
-1) Make it possibly more secure
-2) Make entire servers be encrypted (works kindof, but you have to manually change it)
-3) Make support for emojis and codeblock markup highlighting
-4) Done! ~~Make it so you can edit the keys without having to edit the file (via settings or maybe another box on discord)~~
-5) Done! ~~Make it more fleshed out with less errors.~~
+Supports Discord Markup excluding code highlighting.
 
 ## Known Bugs
-* Fixed! ~~If you just opened discord and you loaded into a channel with encrypted text, it will say CryptoJS is not defined~~<br>
-* If you use "Citador" or another quote based program it tends to show "Malformed UTF-8 Text" for unknown reason.
+* on macOS the alt key does not always work (this is because of the way macOS alt key works)
+* for large amounts of text, using Citador quotes, or other unknown random reasons, it will sometimes say `Error: Malformed UTF-8 data`
 
-## Change Log (5/15/18) v0.0.5
-* Fixed Server Encryption Errors
-
-## Change Log (5/15/18) v0.0.4
-* Fixed Server Encryption Errors
-
-## Change Log (5/15/18) v0.0.3
-* Fixed some bugs
-* Now possible to encrypt server names, roles, and topics for channels (you have to do it manually)
-* Auto update, you shouldn't have to manually update it anymore.
-* Supports Citador quotes, no longer shows "Malformed UTF-8 Text"
-* Support for Markup, codeblocks, and code line blocks
-
-## Change Log (4/28/18) v0.0.2
-* Now you can edit the key VIA the betterdiscord settings
-* Doesn't Encrypt blank message
-* No more lock emoji as prefix, it detects it another way.
-* Some Bugs Fixed.
+## Future Plans
+* Adding a button beside the `+` on discord for toggling encryption globally for messages, which means no ALT key.
+* Fixing general bugs.
+* Fixing the Tampermonkey script (it is broken right now).
