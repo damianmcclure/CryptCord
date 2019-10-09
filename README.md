@@ -12,7 +12,7 @@ A Discord plugin for encrypting your messages with AES-256, using the CryptoJS l
 5. Go to where you wish to send an encrypted message, Type it out, and then hold ALT and press enter. It will send an encrypted message.
 
 ## Screenshots
-![example1](https://i.imgur.com/lx665z7.png)<br>
+![example1](https://i.imgur.com/mN1SpgC.png)<br>
 The red messages are messages you don't have the key for, the green ones are.
 <br><br>
 ![example2](https://i.imgur.com/qA22Y2S.gif)<br>
