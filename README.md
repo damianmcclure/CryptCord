@@ -1,10 +1,10 @@
-# CryptCord
-BetterDiscord plugin for encrypting &amp; decrypting messages with private key.
+# <center>CryptCord</center>
+<h2>End-To-End Encryption for Discord Messages.</h2>
 
 ## About
 A Discord plugin for encrypting your messages with AES-256, using the CryptoJS library. I don't know the full extent of the security of AES-256, but you should do your own research, <a href="https://crypto.stackexchange.com/questions/2251/how-secure-is-aes-256">StackExchange</a>. I am not responsible for miss-use of this plugin with any illegal activities or otherwise TOS-Breaking things on Discord. You are solely responsible for what you use this tool for.
 
-## Instructions
+## Installation
 1. Download and install the plugin via BetterDiscord or whatever plugin manager you choose.
 2. Go to the plugin settings in BetterDiscord, or edit the Encrypt.plugin.js file and change the encryption key. On BetterDiscord you can click "Generate Key".
 3. Save the settings or the file.
