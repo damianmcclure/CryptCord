@@ -9,7 +9,7 @@ A Discord plugin for encrypting your messages with AES-256, using the CryptoJS l
 2. Go to the plugin settings in BetterDiscord, or edit the Encrypt.plugin.js file and change the encryption key. On BetterDiscord you can click "Generate Key".
 3. Save the settings or the file.
 4. Give the key to said person, prefferably via another platform so Discord does not have the key in any way.
-5. Go to where you wish to send an encrypted message, Type it out, and then hold ALT and press enter. It will send an encrypted message.
+5. Now, if you want to enable encryption, there is two ways to do it. One, click the lock emoji in the text bar beside the other buttons, this will toggle the mode on or off. The other way is to press `ALT` and `Enter` at the same time, it will encrypt the message before sending it out.
 
 ## Screenshots
 ![example1](https://i.imgur.com/mN1SpgC.png)<br>
