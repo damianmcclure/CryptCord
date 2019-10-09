@@ -1,5 +1,5 @@
-# <center>CryptCord</center>
-<h2>End-To-End Encryption for Discord Messages.</h2>
+<h1 align="center">CryptCord</h1>
+<h3>End-To-End Encryption for Discord Messages.</h3>
 
 ## About
 A Discord plugin for encrypting your messages with AES-256, using the CryptoJS library. I don't know the full extent of the security of AES-256, but you should do your own research, <a href="https://crypto.stackexchange.com/questions/2251/how-secure-is-aes-256">StackExchange</a>. I am not responsible for miss-use of this plugin with any illegal activities or otherwise TOS-Breaking things on Discord. You are solely responsible for what you use this tool for.
